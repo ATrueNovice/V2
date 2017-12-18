@@ -168,6 +168,8 @@ class PreviewVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     //Open In Native Map
     @IBAction func openMap(_ sender: Any) {
 
+        iAd()
+
         let regionDistance: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 500, longitudeDelta: 500)
         let coordinate =  CLLocationCoordinate2D(latitude: locationData.latitude, longitude: locationData.longitude)
 
@@ -180,7 +182,6 @@ class PreviewVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
 
         mapItem.name = locationData.locationName
         mapItem.openInMaps(launchOptions: options)
-
     }
 }
 

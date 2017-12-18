@@ -99,9 +99,24 @@ class SignIn: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, UITextFi
         })
     }
 
+    //Anonymous SignIn
 
+    @IBAction func anonButton(_ sender: Any) {
+            Auth.auth().signInAnonymously(completion:({ (user, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                if let user = user {
+                    let userData = ["Provider": user.providerID]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
 
+            }))
 
+        }
+
+    
 
     //EMAIL SIGN IN
     @IBAction func signInTapped(_ sender: AnyObject) {
